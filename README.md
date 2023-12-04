@@ -1,9 +1,10 @@
-<h1 align="center"> To-do Manager</h1>
+<h1 align="center"> To-do- Gerenciamento de Tarefas</h1>
 
-Projeto Criado para o desafio Fast Track - Sharp Coders 2023  #ÍmãTech
+Projeto criado para o desafio Fast Track - Sharp Coders 2023  #ÍmãTech
+Aluno: Lanival Antonio da Silva Junior
 
 Abra o projeto [AQUI!](https://lenysjunior.github.io/desafio-FastTrack/login.html)
 
-This is how the project looks like:
+Tema do projeto:
 
 ![image](https://github.com/lenysjunior/desafio-FastTrack/blob/main/img/tela.png)
