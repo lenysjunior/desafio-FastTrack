@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="../css/stylesCadastro.css">
+</head>
+
+<body>
+    <div class="main-login">
+        <div class="left-login">
+            <img src="../img/sign-up-animate.svg" class="left-login-image" alt="Task animation">
+
+            <div class="right-login">
+                <div class="card-login">
+                    <h2>Cadastrar</h2>
+                    <form id="cadastroForm" onsubmit="salvarForm();">
+                        <div class="form-group">
+                            <div class="textfiled">
+                                <label for="nome">Nome:</label>
+                                <input type="text" class="form-control" id="nome" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="textfiled">
+                                <label for="email">E-mail:</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="textfiled">
+                                <label for="senha">Senha:</label>
+                                <input type="password" class="form-control" id="senha" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-login">Cadastrar</button>
+                    </form>
+                    <hr>
+                    <p>Já possui uma conta? <a href='../login.html'>Faça login</a></p>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            function salvarForm() {
+                if (localStorage.cont) {
+                    localStorage.cont = Number(localStorage.cont) + 1;
+                } else {
+                    localStorage.cont = 1;
+                }
+
+                var cad = document.getElementById('nome').value + ';' + document.getElementById('email').value + ';' + document.getElementById('senha').value;
+                localStorage.setItem("cad_" + localStorage.cont, cad);
+
+                alert('Cadastro realizado com sucesso!');
+
+                // Redirecionar para a página login.html
+                window.location.href = '../login.html';
+            }
+        </script>
+</body>
+
+</html>

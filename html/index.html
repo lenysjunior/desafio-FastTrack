@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="../css/stylesIndex.css">
+    <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@1&display=swap" rel="stylesheet">
+
+
+</head>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="task-container">
+            <div class="header">
+                <div class="container mt-5">
+                    <h2 id="nomeUsuario"></h2>
+                    <button class="btn btn-danger" id="btnSair">Sair</button>
+                </div>
+            </div>
+
+            <!-- Script de saudação -->
+            <script>
+                // Recuperar os dados do usuário do localStorage
+                var usuarioLogado = localStorage.getItem("usuarioLogado");
+
+                if (usuarioLogado) {
+                    // Converter a string JSON de volta para um objeto JavaScript
+                    var usuario = JSON.parse(usuarioLogado);
+
+                    // Exibir o nome do usuário no corpo da página
+                    document.getElementById('nomeUsuario').textContent = 'Bem-vindo, ' + usuario.nome + '!';
+                } else {
+                    // O usuário não está logado, redirecionar para a página de login
+                    alert('Você não está logado. Redirecionando para a página de login.');
+                    window.location.href = 'login.html';
+                }
+
+                // Adicionar um evento de clique ao botão de sair
+                document.getElementById('btnSair').addEventListener('click', function () {
+                    // Remover os dados do usuário do localStorage
+                    localStorage.removeItem("usuarioLogado");
+                    alert('Você saiu com sucesso.');
+                    // Redirecionar para a página de login
+                    window.location.href = '../login.html';
+                });
+            </script>
+
+            <div class="container mt-5">
+                <h3 class="text-center mb-4">Gerenciador de Tarefas</h3>
+
+                <!-- Formulário de criação de tarefa -->
+                <form id="taskForm">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="taskName" class="name-task">Nome da Tarefa</label>
+                            <input type="text" class="form-control" id="taskName" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="startTime" class="data-HoraInicio">Data e Hora de Início</label>
+                            <input type="datetime-local" class="form-control" id="startTime" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="endTime" class="data-HoraFim">Data e Hora de Término</label>
+                            <input type="datetime-local" class="form-control" id="endTime" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDescription" class="descricao">Descrição</label>
+                        <textarea class="form-control" id="taskDescription" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn-cadastro">Salvar</button>
+                </form>
+
+                <!-- Lista de tarefas -->
+                <div class="colunas-task">
+                    <table class="table mt-5">
+
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Início</th>
+                                <th>Término</th>
+                                <th>Status</th>
+                                <th>Alterar</th>
+                                <th>Apagar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="taskList"></tbody>
+                    </table>
+                </div>
+
+                <!-- Modal para exibir descrição da tarefa -->
+                <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog"
+                    aria-labelledby="descriptionModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="descriptionModalLabel">Descrição da Tarefa</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="taskDescriptionModalBody"></div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+            
+                </script>
+
+                <!-- Modal para editar tarefa -->
+                <div class="modal fade" id="editTaskModal" tabindex="-1" role="dialog"
+                    aria-labelledby="editTaskModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editTaskModalLabel">Editar Tarefa</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="editTaskForm">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="editTaskName">Nome da Tarefa</label>
+                                            <input type="text" class="form-control" id="editTaskName" required>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="editStartTime">Início</label>
+                                            <input type="datetime-local" class="form-control" id="editStartTime"
+                                                required>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="editEndTime">Término</label>
+                                            <input type="datetime-local" class="form-control" id="editEndTime" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editTaskDescription">Descrição</label>
+                                        <textarea class="form-control" id="editTaskDescription" rows="3"></textarea>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" id="saveChangesBtn">Salvar
+                                        Alterações</button>
+                                    <button type="button" class="btn btn-success" id="markAsDoneBtn">Marcar como
+                                        Realizado</button>
+                                    <button type="button" class="btn btn-warning" id="cancelBtn">Cancelar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

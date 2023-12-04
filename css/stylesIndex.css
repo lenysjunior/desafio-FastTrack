@@ -1,0 +1,132 @@
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@1&display=swap');
+
+        .body {
+            font-family: 'Roboto Mono', monospace;
+            margin: 0;
+        }
+
+        body * {
+           
+            box-sizing: border-box;
+        }
+
+        .main-container {
+            background-image: url('../img/add-tasks-animate.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .task-container {
+            width: 50vw;
+            background: rgba(47, 40, 65, 0.8);
+            box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.34);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h2 {
+            font-size: 20px;
+            color: white;
+            font-family: 'Roboto Mono', monospace;
+            margin: 0;
+        }
+
+        .btnSair {
+            padding: 5px 10px;
+            border-radius: 8px;
+            outline: none;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 3px;
+            background: #20ff88;
+            cursor: pointer;
+            box-shadow: 0px 10px 40px -12px #00ff8052;
+            color: white;
+        }
+
+        .btn-cadastro {
+            padding: 10px 5px;
+            border-radius: 8px;
+            outline: none;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 3px;
+            background: #20ff88;
+            cursor: pointer;
+            box-shadow: 0px 10px 40px -12px #00ff8052;
+            color: black;
+        }
+
+        .form-row {
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .table th,
+        .table td {
+            color: white;
+        }
+
+        .task-container .name-task {
+            font-size: 20px;
+            color: white;
+
+        }
+
+        .task-container h3 {
+            font-size: 40px;
+            color: #20ff88;
+
+        }
+
+        .task-container .data-HoraInicio {
+            font-size: 20px;
+            color: white;
+
+        }
+
+        .task-container .data-HoraFim {
+            font-size: 20px;
+            color: white;
+
+        }
+
+        .task-container .descricao {
+            font-size: 20px;
+            color: white;
+
+        }
+
+        .colunas-task th {
+            font-size: 20px;
+            color: #20ff88;
+
+        }
+
+        .colunas-task tbody {
+            font-size: 20px;
+            color: white;
+
+        }
+    </style>
