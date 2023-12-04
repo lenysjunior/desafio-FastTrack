@@ -1,6 +1,6 @@
 <h1 align="center"> To-do- Gerenciamento de Tarefas</h1>
 
-Projeto criado para o desafio Fast Track - Sharp Coders 2023  #ÍmãTech
+Projeto criado para o desafio Fast Track - Sharp Coders 2023  #ÍmãTech<br>
 <p>Aluno: Lanival Antonio da Silva Junior</p>
 
 Abra o projeto [AQUI!](https://lenysjunior.github.io/desafio-FastTrack/login.html)
